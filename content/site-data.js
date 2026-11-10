@@ -11,7 +11,7 @@ window.siteData = {
     "hero": {
       "title": "王玘珩",
       "affiliation": "南洋理工大学 · 硕士研究生",
-      "summary": "南洋理工大学计算机控制与自动化硕士在读（MARS Lab，导师杨剑飞），本科毕业于北京理工大学自动化专业。我研究学习得到的机器人系统怎样在训练条件之外继续工作。正在寻找 2027 年秋季入学的机器人方向博士机会。"
+      "summary": "南洋理工大学计算机控制与自动化硕士在读（硕士论文导师杨剑飞），本科毕业于北京理工大学自动化专业。我研究学习得到的机器人系统怎样在训练条件之外继续工作。正在寻找 2027 年秋季入学的机器人方向博士机会。"
     },
     "about": {
       "copy": "我认为机器人未来几年要同时面对几个不同的问题：动得比示教更快，在不理想的画面下工作，在人身边做出可检验的决策，并从部署数据中持续改进。这些方向各有各的问题，共同点是我的工作方式：先说清预期的失败，用配对干预检验，并写明什么结果会改变判断。"
@@ -34,7 +34,7 @@ window.siteData = {
       ],
       [
         "2026.08",
-        "加入 NTU MARS Lab 攻读硕士，导师杨剑飞。"
+        "入读南洋理工大学计算机控制与自动化硕士（MSc CCA），硕士论文导师为杨剑飞。"
       ],
       [
         "2026.04",
@@ -177,7 +177,7 @@ window.siteData = {
     "hero": {
       "title": "Wang Qiheng",
       "affiliation": "M.Sc. Student, Nanyang Technological University",
-      "summary": "M.Sc. student in Computer Control & Automation at NTU (MARS Lab, advised by Jianfei Yang), with a B.Eng. in Automation from Beijing Institute of Technology. I study how learned robot systems keep working beyond their training conditions. I am looking for robotics PhD positions starting in Fall 2027."
+      "summary": "M.Sc. student in Computer Control & Automation at NTU (dissertation supervised by Jianfei Yang), with a B.Eng. in Automation from Beijing Institute of Technology. I study how learned robot systems keep working beyond their training conditions. I am looking for robotics PhD positions starting in Fall 2027."
     },
     "about": {
       "copy": "I believe robots will face several distinct problems in the coming years: moving faster than their demonstrations, working with imperfect images, making checkable decisions near people, and improving from deployment data. Each direction stands on its own. What they share is how I work: name the failure I expect, test it with paired interventions, and state which result would change my mind."
@@ -200,7 +200,7 @@ window.siteData = {
       ],
       [
         "2026.08",
-        "Joined MARS Lab at NTU as an M.Sc. student, advised by Jianfei Yang."
+        "Started the M.Sc. in Computer Control & Automation at NTU, with a dissertation supervised by Jianfei Yang."
       ],
       [
         "2026.04",
