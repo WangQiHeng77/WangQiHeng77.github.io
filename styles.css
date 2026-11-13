@@ -54,19 +54,26 @@ section > p { margin: 0 0 14px; }
 .news { margin: 0; padding: 0; list-style: none; }
 .news time { display: inline-block; min-width: 72px; color: var(--muted); }
 
-.entry { margin-bottom: 18px; }
+.line { margin-bottom: 30px; }
+.line:last-child { margin-bottom: 0; }
+.line h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; }
+.why { margin: 0 0 14px; color: var(--muted); }
+.belief { color: var(--ink); }
+.ongoing { margin: 0 0 10px; padding-left: 12px; border-left: 3px solid #ddd; }
+.entry { margin: 0 0 16px; }
 .entry:last-child { margin-bottom: 0; }
-.entry h3 { margin: 0; font-size: 15px; font-weight: 700; }
+.entry h4 { margin: 0; font-size: 15px; font-weight: 700; }
 .entry p { margin: 0; }
 .entry .venue { font-style: italic; }
 .entry .summary { margin-top: 6px; }
 .authors strong { font-weight: 700; }
-.note { margin-top: 10px; color: var(--muted); font-size: 13.5px; }
+.entry .role { margin-top: 4px; color: var(--muted); }
+.note { margin-top: 6px; color: var(--muted); font-size: 13.5px; }
 
 .row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; margin-bottom: 10px; }
 .row:last-child { margin-bottom: 0; }
 .row .when { color: var(--muted); }
-.row h3 { margin: 0; font-size: 15px; font-weight: 700; }
+.row h4 { margin: 0; font-size: 15px; font-weight: 700; }
 .row p { margin: 0; }
 
 footer { margin-top: 44px; color: var(--muted); font-size: 13px; text-align: right; }

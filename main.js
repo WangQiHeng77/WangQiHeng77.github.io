@@ -1,7 +1,8 @@
 const data = window.siteData;
 const $ = (id) => document.getElementById(id);
 const SELF = "Qiheng Wang";
-let language = localStorage.getItem("wqh-language") || "zh";
+let language = "zh";
+try { language = localStorage.getItem("wqh-language") || "zh"; } catch (e) { /* storage unavailable */ }
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -23,31 +24,44 @@ function joined(nodes, separator) {
 
 function paperEntry(paper, labels) {
   const entry = el("article", "entry");
-  const title = el("h3");
+  const title = el("h4");
   title.append(link(paper.title, paper.url));
-
   const authors = el("p", "authors");
   authors.append(...joined(paper.authors.map((name) => (name.startsWith(SELF) ? el("strong", "", name) : name)), ", "));
-
   const links = el("p");
   links.append(...joined([link(labels.project, paper.url), ...paper.links.map(([label, href]) => link(label, href))], " / "));
-
   entry.append(title, authors, el("p", "venue", paper.venue), links, el("p", "summary", paper.summary));
+  if (paper.role) entry.append(el("p", "role", paper.role));
+  entry.append(el("p", "note", labels.equal));
   return entry;
 }
 
-function textEntry(title, copy, meta) {
+function projectEntry(item) {
   const entry = el("article", "entry");
-  entry.append(el("h3", "", title));
-  if (meta) entry.append(el("p", "venue", meta));
-  entry.append(el("p", "", copy));
+  entry.append(el("h4", "", item.title), el("p", "venue", item.meta), el("p", "", item.summary));
   return entry;
+}
+
+function lineBlock(line, index, labels, total) {
+  const block = el("article", "line");
+  const last = index === total - 1 && !line.belief;
+  block.append(el("h3", "", last ? line.title : `${labels.line} ${index + 1} · ${line.title}`));
+  const why = el("p", "why");
+  if (line.belief) why.append(el("span", "belief", line.belief), " ");
+  why.append(line.question);
+  block.append(why);
+  for (const item of line.items) {
+    if (item.kind === "paper") block.append(paperEntry(item, labels));
+    else if (item.kind === "project") block.append(projectEntry(item));
+    else block.append(el("p", "ongoing", item.text));
+  }
+  return block;
 }
 
 function row(when, title, copy) {
   const item = el("div", "row");
   const body = el("div");
-  body.append(el("h3", "", title), el("p", "", copy));
+  body.append(el("h4", "", title), el("p", "", copy));
   item.append(el("div", "when", when), body);
   return item;
 }
@@ -71,28 +85,26 @@ function render() {
     return item;
   }));
 
-  $("research-title").textContent = labels.research;
-  $("about").textContent = t.about.copy;
-  $("research-list").replaceChildren(...t.research.map(([title, copy]) => textEntry(title, copy)));
-
-  $("papers-title").textContent = labels.papers;
-  $("papers-list").replaceChildren(...t.papers.map((paper) => paperEntry(paper, labels)), el("p", "note", labels.equal));
-
-  $("projects-title").textContent = labels.projects;
-  $("projects-list").replaceChildren(...t.projects.map((p) => textEntry(p.title, p.summary, `${p.year} · ${p.label}`)));
+  $("lines-title").textContent = labels.lines;
+  $("lines-intro").textContent = t.intro;
+  $("lines-list").replaceChildren(...t.lines.map((line, i) => lineBlock(line, i, labels, t.lines.length)));
 
   $("experience-title").textContent = labels.experience;
   $("experience-list").replaceChildren(...t.experience.map(([when, title, copy]) => row(when, title, copy)));
 
   $("output-title").textContent = labels.output;
-  $("output-list").replaceChildren(...t.output.map(([kind, copy]) => textEntry(kind, copy)));
+  $("output-list").replaceChildren(...t.output.map(([kind, copy]) => {
+    const entry = el("article", "entry");
+    entry.append(el("h4", "", kind), el("p", "", copy));
+    return entry;
+  }));
 
   $("footer").textContent = t.footer;
 }
 
 $("language-toggle").addEventListener("click", () => {
   language = language === "zh" ? "en" : "zh";
-  localStorage.setItem("wqh-language", language);
+  try { localStorage.setItem("wqh-language", language); } catch (e) { /* storage unavailable */ }
   render();
 });
 
