@@ -85,14 +85,8 @@ window.siteData = {
         "question": "稀疏的画面和信号，能否读出快速发生的接触与事件？",
         "items": [
           {
-            "kind": "project",
-            "title": "硕士论文：从视觉和本体信号中提取接触信息",
-            "meta": "2026 - 至今 · NTU",
-            "summary": "训练时用触觉或腕部力信号监督，部署时只用视觉和本体感觉，与调好参的规则控制比较。审计公开数据集时发现其中的损伤标签与录制批次绑定，因此评测要留出物体、批次和速度。"
-          },
-          {
             "kind": "note",
-            "text": "与上海创智合作：在稀疏视频帧之间推演手与琴键的交互，以 MIDI 作为每次按键的物理真值；我负责指法提取与可自动校验的数据和评测（进行中）。"
+            "text": "与上海创智合作（共同第一作者，目标 ICML 2027）：多模态大模型（MLLM）只看到稀疏帧，由它输出潜在动作，驱动动作条件的潜在世界模型（LWM）在帧间推演手与琴键的交互，再写回推理链作答；以 MIDI 作为每次按键的物理真值。我负责训练方式比较、评测设计与可自动校验的数据。"
           }
         ]
       },
@@ -104,12 +98,6 @@ window.siteData = {
           {
             "kind": "note",
             "text": "一项关于去雾基准分辨能力的独作研究正在投稿双盲会议，预印本和代码预计 12 月公开。"
-          },
-          {
-            "kind": "project",
-            "title": "机器人相机的图像复原与几何可用性",
-            "meta": "2026 · 探索性项目",
-            "summary": "为机器人相机搭建模糊、噪声、压缩复合退化的复原训练流程，用特征匹配和 RANSAC 内点检验复原对几何是否有用。初步观察：通用复原能提升几何一致性，也可能减少可匹配的特征。"
           },
           {
             "kind": "project",
@@ -155,7 +143,7 @@ window.siteData = {
       [
         "2026.08 - Now",
         "NTU MARS Lab | M.Sc. Research",
-        "机器人策略执行与硕士论文：从视觉和本体信号中提取接触信息。"
+        "机器人策略执行研究：执行速度变化时，策略输入与输出中的物理时间。"
       ],
       [
         "2026.04 - 08",
@@ -282,14 +270,8 @@ window.siteData = {
         "question": "Can sparse images and signals still reveal fast contact and events?",
         "items": [
           {
-            "kind": "project",
-            "title": "M.Sc. dissertation: contact signals from vision and proprioception",
-            "meta": "2026 - present · NTU",
-            "summary": "Tactile or wrist-force signals supervise training; deployment uses only vision and proprioception, compared against tuned rule-based control. An audit of public data found damage labels tied to recording sessions, so evaluation holds out objects, sessions and speeds."
-          },
-          {
             "kind": "note",
-            "text": "Collaboration with Shanghai Innovation Institute: rolling out hand–key interactions between sparse video frames, with MIDI as physical ground truth for every key press. I work on fingering extraction and automatically verifiable data and evaluation (ongoing)."
+            "text": "Collaboration with Shanghai Innovation Institute (co-first author, targeting ICML 2027): an MLLM that sees only sparse frames emits latent actions, which drive an action-conditioned latent world model (LWM) to roll out hand–key interactions between frames; the rollout is written back into the MLLM’s reasoning. MIDI gives physical ground truth for every key press. I work on comparing training schemes, evaluation design and automatically verifiable data."
           }
         ]
       },
@@ -301,12 +283,6 @@ window.siteData = {
           {
             "kind": "note",
             "text": "A sole-author study of how much a dehazing benchmark can resolve is being submitted to a double-blind venue; the preprint and code are planned for December."
-          },
-          {
-            "kind": "project",
-            "title": "Image restoration and geometric utility for robot cameras",
-            "meta": "2026 · exploratory project",
-            "summary": "Built a restoration training pipeline for combined blur, noise and compression, and tested with feature matching and RANSAC inliers whether restoration helps geometry. Early observation: general restoration can improve geometric consistency but also remove matchable features."
           },
           {
             "kind": "project",
@@ -352,7 +328,7 @@ window.siteData = {
       [
         "2026.08 - Now",
         "NTU MARS Lab | M.Sc. Research",
-        "Robot policy execution and an MSc thesis on extracting contact signals from vision and proprioception."
+        "Research on robot policy execution: the physical time carried by a policy's inputs and outputs when execution speed changes."
       ],
       [
         "2026.04 - 08",
