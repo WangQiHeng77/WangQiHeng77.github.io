@@ -32,7 +32,6 @@ function paperEntry(paper, labels) {
   links.append(...joined([link(labels.project, paper.url), ...paper.links.map(([label, href]) => link(label, href))], " / "));
   entry.append(title, authors, el("p", "venue", paper.venue), links, el("p", "summary", paper.summary));
   if (paper.role) entry.append(el("p", "role", paper.role));
-  entry.append(el("p", "note", labels.equal));
   return entry;
 }
 

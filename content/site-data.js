@@ -11,7 +11,7 @@ window.siteData = {
     "hero": {
       "title": "王玘珩",
       "affiliation": "南洋理工大学 · 硕士研究生",
-      "summary": "南洋理工大学计算机控制与自动化硕士在读（硕士论文导师杨剑飞），本科毕业于北京理工大学自动化专业。我研究学习得到的机器人系统怎样在训练条件之外继续工作。正在寻找 2027 年秋季入学的机器人方向博士机会。"
+      "summary": "南洋理工大学计算机控制与自动化硕士在读（硕士论文导师杨剑飞），本科毕业于北京理工大学自动化专业。基础模型正在接管机器人的高层推理，但决定一个动作能否成功的物理量——时间、接触事件、图像如何形成——它们并不理解。我研究如何让学习得到的机器人系统读懂并遵从这些物理量。正在寻找 2027 年秋季入学的机器人方向博士机会。"
     },
     "labels": {
       "lines": "研究主线",
@@ -37,20 +37,20 @@ window.siteData = {
         "开始在宇树科技实习，任 AI 算法实习生。"
       ]
     ],
-    "intro": "我把研究组织成几条主线。每条线都来自我对机器人未来几年的一个判断，各自可以独立成立或被推翻。它们共享的是一种做法：先说清预期的失败，用配对干预去检验，并写明什么结果会改变我的判断。",
+    "intro": "我的研究按物理量分成三条线：时间、接触与事件、成像物理。每条线各自可以成立或被推翻；共同的做法是先说清预期的失败，用配对干预检验，并写明什么结果会改变我的判断。",
     "lines": [
       {
-        "title": "策略对时间的假设",
-        "belief": "机器人需要比示教动得更快，而机载算力有限。",
-        "question": "学到的策略对时间做了哪些假设？执行速度、延迟或硬件一变，哪些环节会失效，哪些不重训也能修好？",
+        "title": "时间",
+        "belief": "策略的输入和输出都隐含着训练数据中的物理时间。",
+        "question": "执行速度、延迟或硬件一变，输入和输出会出现哪些失配？哪些不重训就能修好？",
         "items": [
           {
             "kind": "paper",
             "title": "FreeSpeed: Training-Free Speed Control for Generative Robot Policies",
             "url": "https://yuxuanhu9.github.io/FreeSpeed/",
             "authors": [
-              "Yuxuan Hu*",
-              "Shilin Shan*",
+              "Yuxuan Hu",
+              "Shilin Shan",
               "Qiheng Wang",
               "Jinghan Yang",
               "Junqiao Fan",
@@ -68,6 +68,10 @@ window.siteData = {
             "role": "我的工作：参与实现和评估重采样方法，完成时序、历史采样和重规划研究，搭建了 31 个任务、每任务 50 个配对初态的评测。"
           },
           {
+            "kind": "note",
+            "text": "输入侧的一项工作正在准备投稿，双盲期间暂不公开细节。"
+          },
+          {
             "kind": "project",
             "title": "世界动作模型的机载推理瓶颈",
             "meta": "2026 · 宇树科技实习",
@@ -76,25 +80,31 @@ window.siteData = {
         ]
       },
       {
-        "title": "判断进步是不是真的",
-        "belief": "部署后的机器人会产生远多于人能标注的数据，改进只能来自少量可验证的数据。",
-        "question": "一次宣称的提升，是真实的进步，还是训练噪声或评测集偏差？一个基准到底能分辨多大的差距？",
+        "title": "接触与事件",
+        "belief": "接触和按键往往发生得比相机采样更快。",
+        "question": "稀疏的画面和信号，能否读出快速发生的接触与事件？",
         "items": [
           {
-            "kind": "note",
-            "text": "一项关于评测基准分辨力的独作研究正在投稿双盲会议，预印本和代码预计 12 月公开。"
+            "kind": "project",
+            "title": "硕士论文：从视觉和本体信号中提取接触信息",
+            "meta": "2026 - 至今 · NTU",
+            "summary": "训练时用触觉或腕部力信号监督，部署时只用视觉和本体感觉，与调好参的规则控制比较。审计公开数据集时发现其中的损伤标签与录制批次绑定，因此评测要留出物体、批次和速度。"
           },
           {
             "kind": "note",
-            "text": "与上海创智合作：手部快速交互的视频理解，负责可自动校验的数据与评测（进行中）。"
+            "text": "与上海创智合作：在稀疏视频帧之间推演手与琴键的交互，以 MIDI 作为每次按键的物理真值；我负责指法提取与可自动校验的数据和评测（进行中）。"
           }
         ]
       },
       {
-        "title": "运动中看清世界",
-        "belief": "通用机器人不能依赖清晰、光照良好的画面。",
-        "question": "全身运动造成的模糊、低光和恶劣天气，会不会伤害已训练好的策略？修正能否快到在闭环里有用？",
+        "title": "成像物理",
+        "belief": "雾和运动模糊都是物理过程，而通用机器人不能依赖清晰、光照良好的画面。",
+        "question": "现有方法究竟修复了多少物理退化？修复对机器人是否有用、能否快到在闭环里起作用？",
         "items": [
+          {
+            "kind": "note",
+            "text": "一项关于去雾基准分辨能力的独作研究正在投稿双盲会议，预印本和代码预计 12 月公开。"
+          },
           {
             "kind": "project",
             "title": "机器人相机的图像复原与几何可用性",
@@ -106,19 +116,6 @@ window.siteData = {
             "title": "横岭：多模态煤矸石分选与巡检",
             "meta": "2023 - 2024 · 项目负责人",
             "summary": "面向夜间、粉尘的矿井环境，单一可见光视觉不稳定，于是结合 RGB 与红外热成像；完成数据采集、YOLOv5 部署和 ROS 集成。"
-          }
-        ]
-      },
-      {
-        "title": "可检验的物理决策",
-        "belief": "在人身边工作的机器人，要在动作发生前判断物理后果。",
-        "question": "有限的触觉或力觉真值，能否支撑只用视觉和本体信号做出的执行风险判断？",
-        "items": [
-          {
-            "kind": "project",
-            "title": "硕士论文：从视觉和本体信号中提取接触信息",
-            "meta": "2026 - 至今 · NTU",
-            "summary": "训练时用触觉或腕部力信号监督，部署时只用视觉和本体感觉，与调好参的规则控制比较。审计公开数据集时发现其中的损伤标签与录制批次绑定，因此评测要留出物体、批次和速度。"
           }
         ]
       },
@@ -211,7 +208,7 @@ window.siteData = {
     "hero": {
       "title": "Wang Qiheng",
       "affiliation": "M.Sc. Student, Nanyang Technological University",
-      "summary": "M.Sc. student in Computer Control & Automation at NTU (dissertation supervised by Jianfei Yang), with a B.Eng. in Automation from Beijing Institute of Technology. I study how learned robot systems keep working beyond their training conditions. I am looking for robotics PhD positions starting in Fall 2027."
+      "summary": "M.Sc. student in Computer Control & Automation at NTU (dissertation supervised by Jianfei Yang), with a B.Eng. in Automation from Beijing Institute of Technology. Foundation models are taking over high-level reasoning for robots, but they do not read the physical quantities that decide whether an action succeeds: time, contact events, and how images are formed. I study how learned robot systems can read and respect these quantities. I am looking for robotics PhD positions starting in Fall 2027."
     },
     "labels": {
       "lines": "Research",
@@ -237,20 +234,20 @@ window.siteData = {
         "Started an internship at Unitree Robotics as an AI algorithm intern."
       ]
     ],
-    "intro": "My work is organised as separate lines. Each starts from a belief about where robotics is going, and each can succeed or fail on its own. What they share is a way of working: name the failure I expect, test it with paired interventions, and state which result would change my mind.",
+    "intro": "My work is organised by physical quantity: time, contact and events, and image formation. Each line can succeed or fail on its own. What they share is a way of working: name the failure I expect, test it with paired interventions, and state which result would change my mind.",
     "lines": [
       {
-        "title": "What a policy assumes about time",
-        "belief": "Robots will need to move faster than their demonstrations, on limited onboard compute.",
-        "question": "What does a learned policy assume about time? When speed, latency or hardware changes, what breaks, and what can be fixed without retraining?",
+        "title": "Time",
+        "belief": "A policy's inputs and outputs both carry the physical time of its training data.",
+        "question": "When speed, latency or hardware changes, which inputs and outputs fall out of step, and what can be fixed without retraining?",
         "items": [
           {
             "kind": "paper",
             "title": "FreeSpeed: Training-Free Speed Control for Generative Robot Policies",
             "url": "https://yuxuanhu9.github.io/FreeSpeed/",
             "authors": [
-              "Yuxuan Hu*",
-              "Shilin Shan*",
+              "Yuxuan Hu",
+              "Shilin Shan",
               "Qiheng Wang",
               "Jinghan Yang",
               "Junqiao Fan",
@@ -268,6 +265,10 @@ window.siteData = {
             "role": "My part: implementing and evaluating the resampling method, the timing, history-sampling and replanning studies, and paired evaluations over 31 tasks with 50 matched initial states each."
           },
           {
+            "kind": "note",
+            "text": "A manuscript on the input side is being prepared for submission; details are withheld during double-blind review."
+          },
+          {
             "kind": "project",
             "title": "Onboard inference bottlenecks of a world-action model",
             "meta": "2026 · Unitree Robotics internship",
@@ -276,25 +277,31 @@ window.siteData = {
         ]
       },
       {
-        "title": "Telling whether progress is real",
-        "belief": "Deployed robots will produce far more data than anyone can label, so improvement has to come from a small verified set.",
-        "question": "Is a reported gain real progress, or training noise and test-set bias? How large a difference can a benchmark actually resolve?",
+        "title": "Contact and events",
+        "belief": "Contact and key presses often happen faster than a camera samples.",
+        "question": "Can sparse images and signals still reveal fast contact and events?",
         "items": [
           {
-            "kind": "note",
-            "text": "A sole-author study of how much a benchmark can resolve is being submitted to a double-blind venue; the preprint and code are planned for December."
+            "kind": "project",
+            "title": "M.Sc. dissertation: contact signals from vision and proprioception",
+            "meta": "2026 - present · NTU",
+            "summary": "Tactile or wrist-force signals supervise training; deployment uses only vision and proprioception, compared against tuned rule-based control. An audit of public data found damage labels tied to recording sessions, so evaluation holds out objects, sessions and speeds."
           },
           {
             "kind": "note",
-            "text": "Collaboration with Shanghai Innovation Institute on video understanding of fast hand interactions, where I work on automatically verifiable data and evaluation (ongoing)."
+            "text": "Collaboration with Shanghai Innovation Institute: rolling out hand–key interactions between sparse video frames, with MIDI as physical ground truth for every key press. I work on fingering extraction and automatically verifiable data and evaluation (ongoing)."
           }
         ]
       },
       {
-        "title": "Seeing while moving",
-        "belief": "General-purpose robots cannot depend on sharp, well-lit images.",
-        "question": "Do blur from whole-body motion, low light and bad weather hurt a trained policy, and can corrections run fast enough to matter in closed loop?",
+        "title": "Image formation",
+        "belief": "Haze and motion blur are physical processes, and general-purpose robots cannot depend on sharp, well-lit images.",
+        "question": "How much physical degradation do current methods actually undo, and is the restoration useful to a robot, fast enough to matter in closed loop?",
         "items": [
+          {
+            "kind": "note",
+            "text": "A sole-author study of how much a dehazing benchmark can resolve is being submitted to a double-blind venue; the preprint and code are planned for December."
+          },
           {
             "kind": "project",
             "title": "Image restoration and geometric utility for robot cameras",
@@ -306,19 +313,6 @@ window.siteData = {
             "title": "Hengling: multimodal coal sorting and inspection",
             "meta": "2023 - 2024 · project lead",
             "summary": "Visible-light vision alone was unreliable in dusty, night-time mines, so the robot combined RGB with thermal infrared; I led data collection, YOLOv5 deployment and ROS integration."
-          }
-        ]
-      },
-      {
-        "title": "Physical decisions that can be checked",
-        "belief": "A robot working near people must judge the physical consequence of an action before it happens.",
-        "question": "Can limited tactile or force ground truth support risk judgements made from vision and proprioception alone?",
-        "items": [
-          {
-            "kind": "project",
-            "title": "M.Sc. dissertation: contact signals from vision and proprioception",
-            "meta": "2026 - present · NTU",
-            "summary": "Tactile or wrist-force signals supervise training; deployment uses only vision and proprioception, compared against tuned rule-based control. An audit of public data found damage labels tied to recording sessions, so evaluation holds out objects, sessions and speeds."
           }
         ]
       },
